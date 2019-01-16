@@ -1,0 +1,41 @@
+{{define "sidebar"}}
+<div class="sidebar-black init">
+    <a href="/home" class="active">Home</a>
+
+    {{if (ne .Auth nil)}}
+    <a href="/profile">My Profile</a>
+    {{else}}
+    <a onclick="openModalLogin();">Sign In</a>
+    {{end}}
+
+    {{/*}}
+    @if(\Route::current()->getName() !== "profile.index")
+    @foreach($menu["journal"]["categories"] as $mcf)
+    <a href="/profile?tab-inisiate={{urlencode($mcf->title)}}&index={{$mcf->id}}">{{$mcf->title}}</a>
+    @endforeach
+    @else
+    @foreach($menu['journal']['categories'] as $mcf)
+    <a data-content="{{$mcf->id}}" id="{{$mcf->title}}" onclick="getTimelineFilter(this);">{{$mcf->title}}</a>
+    @endforeach
+    @endif
+    {{*/}}
+
+    <a href="/insiders">Insiders</a>
+    <a href="/shop-list">Shop</a>
+
+    {{if (ne .Auth nil)}}
+    <a href='{{printf "%suser-logout" .Uri}}'>Log Out</a>
+    {{end}}
+    <div class="links">
+        <a href="/about-us">About Us</a>
+        <a href="/work-with-us">Work with Us</a>
+        <a href="/advertise">Advertise</a>
+        <br>
+        <a href="/affiliates">Affiliates</a>
+        <a href="/privacy">Privacy</a>
+        <a href="/terms">Terms</a>
+        <a href="/contact">Contact</a>
+    </div>
+    <p class="term-service">Terms of service © 2018 The Shonet</p>
+</div>
+{{end}}

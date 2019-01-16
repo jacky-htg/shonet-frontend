@@ -17,6 +17,7 @@ type Routes []Route
 
 var routes = Routes{
 	Route{"/home", "GET", controllers.HomeIndexHandler},
+	Route{"/search", "GET", controllers.SearchIndexHandler},
 }
 
 func NewRouter() *mux.Router {

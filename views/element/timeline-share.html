@@ -1,0 +1,31 @@
+{{define "timeline-share"}}
+<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                <h4 class="modal-title" id="myModalLabel">Share to Timeline</h4>
+            </div>
+            <div class="modal-body">
+                <div class="article">
+                    <a href=""><img class="article-img col-xs-1" src="assets/avatar.png" alt="user-profile-img"></a>
+                    <div class="article-profile col-xs-8">
+                        <a href=""><p class="article-name">Rayoga Akbar Firdaus</p></a>
+                    </div>
+                    <a href=""><img class="article-post-img" src="assets/bitmap.jpg"></a>
+                    <div class="article-post">
+                        <div class="post-details">
+                            <a href=""><small class="article-tags">Fashion</small></a><span class="time-ago">2 hours ago.</span><span><a href="" class="blue-tag">Mix & Match</a></span><span class="favorite"><i class="fa fa-bookmark"></i></span>
+                            <a href=""><h1>3 Langkah Mudah Ini Kulitmu Akan Selalu Sehat Terawat, Girls!</h1></a>
+                        </div>
+                    </div>
+                </div>
+                <textarea name="shareFacebook" rows="5" placeholder=""></textarea>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-primary">Share!</button>
+            </div>
+        </div>
+    </div>
+</div>
+{{end}}

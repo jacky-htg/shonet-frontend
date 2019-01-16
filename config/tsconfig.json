@@ -1,0 +1,337 @@
+{
+  "mappings": {
+    "listing_type": {
+      "dynamic": "strict",
+      "properties": {
+        "address": {
+          "type": "text"
+        }
+      ,
+        "area_metric": {
+          "type": "text"
+        }
+      ,
+        "bathrooms": {
+          "type": "integer"
+        }
+      ,
+        "bedrooms": {
+          "type": "integer"
+        }
+      ,
+        "building": {
+          "dynamic": "strict",
+          "properties": {
+            "id": {
+              "type": "integer"
+            }
+          ,
+            "parent_id": {
+              "type": "text"
+            }
+          ,
+            "region": {
+              "type": "text"
+            }
+          ,
+            "type": {
+              "type": "text"
+            }
+          }
+        }
+      ,
+        "city": {
+          "type": "text"
+        }
+      ,
+        "created_at": {
+          "type": "date", "format": "yyyy-MM-dd HH:mm:ss", "null_value": "NULL"
+        }
+      ,
+        "currency": {
+          "type": "text"
+        }
+      ,
+        "deleted_at": {
+          "type": "date", "format": "yyyy-MM-dd HH:mm:ss"
+        }
+      ,
+        "description": {
+          "type": "text"
+        }
+      ,
+        "district": {
+          "type": "text"
+        }
+      ,
+        "floor_area": {
+          "type": "integer"
+        }
+      ,
+        "id": {
+          "type": "integer"
+        }
+      ,
+        "is_street_view": {
+          "type": "text"
+        }
+      ,
+        "keydetail": {
+          "dynamic": "strict",
+          "properties": {
+            "category_id": {
+              "type": "text"
+            }
+          ,
+            "category_name": {
+              "type": "text"
+            }
+          ,
+            "item": {
+              "dynamic": "strict",
+              "properties": {
+                "category_id": {
+                  "type": "text"
+                }
+              ,
+                "item_id": {
+                  "type": "text"
+                }
+              ,
+                "item_name": {
+                  "type": "text"
+                }
+              }
+            }
+          ,
+            "lang": {
+              "type": "text"
+            }
+          }
+        }
+      ,
+        "land_area": {
+          "type": "integer"
+        }
+      ,
+        "location": {
+          "type": "geo_point"
+        }
+      ,
+        "notes": {
+          "type": "text"
+        }
+      ,
+        "parking": {
+          "type": "text"
+        }
+      ,
+        "photos": {
+          "dynamic": "strict",
+          "properties": {
+            "id": {
+              "type": "text"
+            }
+          ,
+            "listing_id": {
+              "type": "text"
+            }
+          ,
+            "primary": {
+              "type": "text"
+            }
+          ,
+            "url": {
+              "type": "text"
+            }
+          }
+        }
+      ,
+        "pid": {
+          "type": "text"
+        }
+      ,
+        "post_code": {
+          "type": "text"
+        }
+      ,
+        "prefered_address": {
+          "type": "text"
+        }
+      ,
+        "price": {
+          "type": "float"
+        }
+      ,
+        "propertyfacility": {
+          "dynamic": "strict",
+          "properties": {
+            "category_id": {
+              "type": "text"
+            }
+          ,
+            "category_name": {
+              "type": "text"
+            }
+          ,
+            "item": {
+              "dynamic": "strict",
+              "properties": {
+                "category_id": {
+                  "type": "text"
+                }
+              ,
+                "item_id": {
+                  "type": "text"
+                }
+              ,
+                "item_name": {
+                  "type": "text"
+                }
+              }
+            }
+          ,
+            "lang": {
+              "type": "text"
+            }
+          }
+        }
+      ,
+        "province": {
+          "type": "text"
+        }
+      ,
+        "region": {
+          "type": "text"
+        }
+      ,
+        "status": {
+          "type": "text"
+        }
+      ,
+        "url_slug": {
+          "type": "text"
+        }
+      ,
+        "type_property": {
+          "dynamic": "strict",
+          "properties": {
+            "id": {
+              "type": "keyword"
+            }
+          ,
+            "name": {
+              "type": "text"
+            }
+          }
+        }
+      ,
+        "updated_at": {
+          "type": "date", "format": "yyyy-MM-dd HH:mm:ss"
+        }
+      ,
+        "user": {
+          "dynamic": "strict",
+          "properties": {
+            "country_code": {
+              "type": "text"
+            }
+          ,
+            "email_verified": {
+              "type": "text"
+            }
+          ,
+            "firstname": {
+              "type": "text"
+            }
+          ,
+            "id": {
+              "type": "text"
+            }
+          ,
+            "is_agent": {
+              "type": "text"
+            }
+          ,
+            "lastname": {
+              "type": "text"
+            }
+          ,
+            "phone_number": {
+              "type": "text"
+            }
+          ,
+            "phone_verified": {
+              "type": "text"
+            }
+          ,
+            "photo_url": {
+              "type": "text"
+            }
+          ,
+            "region": {
+              "type": "text"
+            }
+          ,
+            "status": {
+              "type": "text"
+            }
+          ,
+            "uid": {
+              "type": "text"
+            }
+          ,
+            "url_slug": {
+              "type": "text"
+            }
+          ,
+            "username": {
+              "type": "text"
+            }
+          }
+        }
+      ,
+        "videos": {
+          "dynamic": "strict",
+          "properties": {
+            "id": {
+              "type": "text"
+            }
+          ,
+            "listing_id": {
+              "type": "text"
+            }
+          ,
+            "primary": {
+              "type": "text"
+            }
+          ,
+            "url": {
+              "type": "text"
+            }
+          }
+        }
+      }
+    }
+  }
+,
+  "settings": {
+    "index": {
+      "number_of_shards": 5, "number_of_replicas": 0
+    }
+  ,
+    "analysis": {
+      "filter": {
+        "stopwords_filter": {
+          "type": "stop", "stopwords": ["http", "https", "ftp", "www"]
+        }
+      }
+    ,
+      "analyzer": {
+        "lowercase_with_stopwords": {
+          "type": "custom", "tokenizer": "lowercase", "filter": ["stopwords_filter"]
+        }
+      }
+    }
+  }
+}

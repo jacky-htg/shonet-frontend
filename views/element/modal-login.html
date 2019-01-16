@@ -1,0 +1,195 @@
+{{define "modal-login"}}
+<!-- modal login -->
+@if(is_null(\Auth::user()))
+<div id="user-login-modal" class="modalogin">
+    <div class="modalogin-content" style="margin-bottom: 30px;">
+        <div class="modalogin-header">
+            <span class="close-modalogin">&times;</span>
+            <div style="display: flex; justify-content: center; width: 100%; height: 25px;">
+                <img src="{{ asset('/frontend/assets/the-shonet-logo-dark/the-shonet-logo-dark@2x.jpg') }}" alt="THE SHONET">
+            </div>
+        </div>
+        <div class="modalogin-body">
+            @php isset($resetingPassword) ? $resetingPassword : $resetingPassword = false; @endphp
+            @if($resetingPassword && $emailForResetPassword)
+            <div id="for-reseting-password" style="width:370px;margin:auto;margin-top:30px;margin-bottom:20px;">
+                <form action="{{ route('user.login') }}" method="post">
+                    {{ csrf_field() }}
+                    <input type="email" name="username-forgot-input" id="username-forgot-input" class="input-tag" placeholder="Please input your mail .." autocomplete="off">
+                    <input type="password" name="password-new" id="password-new" class="input-tag" placeholder="Input new password.." autocomplete="off">
+                    <input type="password" name="password-confirm-forgot" id="password-confirm-forgot" class="input-tag" placeholder="Confirm your password.." autocomplete="off">
+
+                    <em class="label-grey">*Please enter your new password and re-enter your new password</em>
+                    <input type="submit" class="submit-button" id="forgot-confirm-button-login" style="margin-top:20px;" value="Reset Password">
+                </form>
+            </div>
+            @elseif ($resetingPassword && $emailForResetPassword === '')
+            <div id="forgot-password-element" style="width:370px;margin:auto;margin-top:30px;margin-bottom:20px;">
+                <img src="{{ asset('/frontend/assets/Interwind-load.gif') }}" alt="Please Wait..." id="img-for-checkmail" class="hide" style="margin:auto;display:block;">
+                <form action="{{ route('sendmail.password.reset') }}" method="POST" id="formlogin-error-for-sendemail">
+                    {{ csrf_field() }}
+                    <input type="email" class="input-tag" name="reset-password" id="reset-error-password" placeholder="Email" autocomplete="off">
+                    <em class="label-grey" id="text-info-for-forgot-error" style="margin-top:5px;">*For Security reason, Your session to reset password is out of date or token unautorized, Please enter your email and we'll send again a link for you to reset your password</em>
+                    <div class="container-space-between" style="margin-bottom: 17px;">
+                        <div></div>
+                        <a class="label-grey" id="text-back-login-error"></a>
+                    </div>
+                    <button class="submit-button" id="forgot-error-button-login" type="button">Reset Password</button>
+                </form>
+            </div>
+            @else
+            <div id="forgot-password-element" class="hide" style="width:370px;margin:auto;margin-top:30px;margin-bottom:20px;">
+                <img src="{{ asset('/frontend/assets/Interwind-load.gif') }}" alt="Please Wait..." id="img-for-checkmail" class="hide" style="margin:auto;display:block;">
+                <form action="{{ route('sendmail.password.reset') }}" method="POST" id="formlogin-for-sendemail">
+                    {{ csrf_field() }}
+                    <input type="email" class="input-tag" name="reset-password" id="reset-password" placeholder="Email" autocomplete="off">
+                    <em class="label-grey" id="text-info-for-forgot" style="margin-top:5px;">*Please enter your email and we'll send a link for you to reset your password</em>
+                    <div class="container-space-between" style="margin-bottom: 17px;">
+                        <div></div>
+                        <a class="label-grey" id="text-back-login" onclick="showForgotPass('login');">Back to login</a>
+                    </div>
+                    <button class="submit-button" id="forgot-button-login" type="button">Reset Password</button>
+                </form>
+            </div>
+            <div id="login-element">
+                <ul class="nav nav-pills nav-justified" id="pills-tab" role="tablist"
+                    style="margin-top: 10px; display: flex;"
+                >
+                    <li class="nav-item">
+                        <a class="nav-link active" id="pills-login-tab" area-show="#pills-login" area-hide="#pills-register" area-deactive="#pills-register-tab">LOG IN</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link " id="pills-register-tab" area-show="#pills-register" area-hide="#pills-login" area-deactive="#pills-login-tab">REGISTER</a>
+                    </li>
+                </ul>
+                <div class="tab-content" id="pills-tabContent" style="margin: 30px 20px 20px 20px;">
+                    <!--Log In-->
+                    <div class="tab-pane modalogin-content-show" id="pills-login">
+                        <form action="{{ route('user.login') }}" method="post">
+                            {{ csrf_field() }}
+                            @if(session()->has('errors'))
+                            <input class="input-tag" id="username" name="email" type="text" placeholder="Username" value="{{ session()->get('email') }}">
+                            <input class="input-tag" id="password-login" name="password" type="password" placeholder="Password" style="border: 1px solid red;">
+                            @else
+                            <input class="input-tag" id="username" name="email" type="text" placeholder="Username">
+                            <input class="input-tag" id="password-login" name="password" type="password" placeholder="Password">
+                            @endif
+
+                            @if(session()->has('errors'))
+                            <em class="label-grey" style="color: red;font-size: 11px;">Your account do not match with our data</em>
+                            @endif
+                            <div class="container-space-between" style="margin-bottom: 17px;">
+                                <div>
+                                    <input id="remember-me-login" type="checkbox">
+                                    <label class="remember-me-label" for="remember-me-login">Remember Me</label>
+                                </div>
+                                <a class="label-grey" onclick="showForgotPass('forgot');">Forgot Password?</a>
+                            </div>
+                            <input type="hidden" name="user-wantto-follow" />
+                            <button class="submit-button modal-login-btn" type="button">Log In</button>
+                        </form>
+
+                        <div style="display: flex; justify-content: space-between; margin: 20px 0px; align-items: center;">
+                            <div id="decoration-div"></div>
+                            <span id="decoration-span">Or</span>
+                            <div id="decoration-div"></div>
+                        </div>
+
+                        <button id="facebook-button" type="button" data-for-following="">
+                            <i style="margin-right: 10px; font-size: 18px; margin-top: -2px;"class="fa fa-facebook-square" aria-hidden="true"></i>
+                            Log In with Facebook
+                        </button>
+                    </div>
+
+                    <!--Register-->
+                    <div class="tab-pane modalogin-content-hide" id="pills-register">
+                        <form action="{{ route('user.register') }}" method="post">
+                            {{csrf_field()}}
+                            <div class="container-space-between">
+                                <input class="input-tag" name="firstname" id="firstname" type="text" placeholder="First Name" style="margin-right: 17px;" required >
+                                <input class="input-tag" name="lastname" id="lastname" type="text" placeholder="Last Name" required >
+                            </div>
+                            <em class="hide" id="email-error" style="color:red;font-size:11px;"></em>
+                            <input class="input-tag" name="email" id="email" type="email" placeholder="Email" required >
+                            <em class="hide" id="password-register-error" style="color:red;font-size:11px;"></em>
+                            <input class="input-tag" name="password" id="password-register" type="password" placeholder="Password" required >
+                            <em class="hide" id="password-confirm-error" style="color:red;font-size:11px;"></em>
+                            <input class="input-tag" name="repassword" id="password-confirm" type="password" placeholder="Confirm Password" required >
+                            <em class="hide" id="select-gender-error" style="color:red;font-size:11px;"></em>
+                            <select required class="input-tag" name="gender" id="select-gender" style="padding: 0 19px;">
+                                <option value="" disabled selected >Gender</option>
+                                <option value="M">Male</option>
+                                <option value="F">Female</option>
+                                <option value="O">Others</option>
+                            </select>
+                            <div>
+                                <em class="hide" id="datetimeinput-error" style="color:red;font-size:11px;">Please input valid birthdate</em>
+                            </div>
+
+                            <div class="col-md-4" style="padding-left:0;color:darkgray;">
+                                <select name="date" id="date" class="input-tag" required>
+                                    <option disabled selected>Birthdate</option>
+                                    @for($date = 1; $date < 32; $date++)
+                                    <option value="{{$date}}">{{$date}}</option>
+                                    @endfor
+                                </select>
+                            </div>
+                            <div class="col-md-4" style="padding-left:0;padding-right:0;color:darkgray;">
+                                <select name="month" id="month" class="input-tag" required>
+                                    <option disabled selected>Birthmonth</option>
+                                    @php $months = array("01" => "January", "02" => "February", "03" => "March", "04" => "April", "05" => "May", "06" => "June", "07" => "July", "08" => "August", "09" => "September", "10" => "October", "11" => "November", "12" => "December"); @endphp
+                                    @foreach($months as $indexKey => $month)
+                                    <option value="{{$indexKey}}">{{$month}}</option>
+                                    @endforeach
+                                </select>
+                            </div>
+                            <div class="col-md-4" style="padding-right:0;color:darkgray;">
+                                <select name="year" id="year" class="input-tag" required>
+                                    <option disabled selected>Birthyear</option>
+                                    @php $yearNow = date("Y"); $startDate = 1930; @endphp
+                                    @for($j = $startDate; $j <= $yearNow; $j++)
+                                    <option value="{{$j}}">{{$j}}</option>
+                                    @endfor
+                                </select>
+                            </div>
+
+                            <div class="clearfix"></div>
+
+                            <em class="hide" id="city-error" style="color:red;font-size:11px;"></em>
+                            <div class="container-space-between" style="margin-top:0px; height: 45px; background;background: #fff;">
+                                <div class="select-arrow"></div>
+                                <select required class="input-tag" name="country" id="country" style="width:100%">
+                                </select>
+                                <span class="space-country"></span>
+                                <div class="select-arrow"></div>
+                                <select required class="input-tag" id="region" name="city" style="width: 100%">
+                                </select>
+
+                                {{-- <div class="select-arrow"></div>
+                                <select required class="input-tag" id="city" name="city" style="width: 100%">
+                                </select> --}}
+                            </div>
+
+                            <div class="container-space-between" style="margin-bottom: 17px; margin-top: 17px;">
+                                <div>
+                                    <input id="remember-me-register" type="checkbox">
+                                    <label class="remember-me-label" for="remember-me-register">Remember Me</label>
+                                </div>
+                                <a class="label-grey" href="#">Privacy Policy</a>
+                            </div>
+                            <input type="hidden" name="user-wantto-follow" />
+                            <button id="submit-button-register" class="submit-button modal-login-btn" type="button">Register Now</button>
+                        </form>
+                    </div>
+                    <!--Register-->
+                </div>
+            </div>
+            @endif
+        </div>
+        <div class="modalogin-footer" style="text-align: center;">
+            <a id="closingModal" class="label-grey">Browse without signing in</a>
+        </div>
+    </div>
+</div>
+@endif
+{{end}}

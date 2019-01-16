@@ -1,0 +1,115 @@
+{{define "header"}}
+<header class="header-container page-heading-heading header-type-default header-default-center header-navbar-default header-scroll-resize">
+    <div class="navbar-container">
+        <div class="navbar navbar-default navbar-scroll-fixed">
+            <div class="navbar-default-wrap">
+                <div class="navbar-default-container">
+                    <div class="navbar-default-row">
+                        <div class="navbar-default-col">
+                            <div class="navbar-wrap">
+                                <div class="navbar-header">
+                                    <div class="container">
+                                        <div class="row">
+                                            <div class="col-md-12 block-mid-header" >
+                                                <button class="navbar-toggle" type="button">
+                                                    <span class="sr-only">Toggle navigation</span>
+                                                    <span class="icon-bar bar-top"></span>
+                                                    <span class="icon-bar bar-middle"></span>
+                                                    <span class="icon-bar bar-bottom"></span>
+                                                </button>
+                                                <a class="navbar-search-button search-icon-mobile" href="#">
+                                                    <i class="fa fa-search"></i>
+                                                </a>
+                                                <a class="navbar-brand" href="./">
+                                                    <div class="navbar-brand-container">
+                                                        <img alt="Shonet" class="logo-fixed navbar-brand-img" src="/frontend/images/the-shonet-logo-dark@3x.jpg">
+                                                        <img alt="Shonet" class="logo-mobile collapse" src="/frontend/images/the-shonet-logo-light@2x.png">
+                                                    </div>
+                                                </a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <nav class="collapse navbar-collapse primary-navbar-collapse">
+                                    <div class="container">
+                                        <div class="row">
+                                            <div class="col-sm-12 header">
+                                                <div class="col-sm-3">
+                                                    <img class="burger" src="/frontend/images/icn_menu.png" alt="">
+                                                    <a href="/home">
+                                                        <img class="logo logo-fixed navbar-brang-img" src="/frontend/images/Bitmap.png" alt="" >
+                                                    </a>
+                                                </div>
+                                                <div class="col-sm-5">
+                                                    <form action="/search" role="form">
+                                                        <div class="form-group">
+                                                            <div class="inner-addon left-addon">
+                                                                <i class="fa fa-search"></i>
+                                                                <input name="search" id="search" type="text" class="form-control" placeholder="Search" autocomplete="off"/>
+                                                            </div>
+                                                        </div>
+                                                    </form>
+                                                </div>
+                                                <div class="col-sm-4">
+                                                    <ul>
+                                                        <li>
+                                                            {{if (eq .Auth nil)}}
+                                                            <div class="dropdown logout">
+
+                                                                <a href="/profile" id="login-button" class="dropdown-toggle" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                                                    <img class="user-profile-img" src='{{printf "%s" .Auth.Photo}}' onerror="this.src='/frontend/images/blog/img-def.svg';" alt="user-profile-img">
+                                                                    <span style="white-space: nowrap; max-width: 100px; overflow: hidden; text-overflow: ellipsis; display: inline-block; position: relative; line-height: 10px">
+																			{{.Auth.Name}}
+                                                                    </span>
+                                                                </a>
+                                                                <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
+                                                                    <a class="dropdown-item" href="/profile">My Profile</a>
+                                                                    <a class="dropdown-item" href="/user-logout">Logout</a>
+                                                                </div>
+
+                                                            </div>
+                                                            {{else}}
+                                                            <a id="login-button"><img class="user-profile-img" src="/frontend/images/blog/img-def.svg" onerror="this.src='/frontend/images/blog/img-def.svg';" alt="user-profile-img">
+                                                                <span style="white-space: nowrap; max-width: 100px; overflow: hidden; text-overflow: ellipsis; display: inline-block; position: relative; top: 4px;">
+                                                                    Log In
+                                                                </span>
+                                                            </a>
+                                                            {{end}}
+                                                        </li>
+                                                        <li><a href="/home">HOME</a></li>
+                                                        <li><a href="/shop-list" id="shop">SHOP</a></li>
+                                                    </ul>
+                                                </div>
+                                                <div class="col-sm-12" id="shop-menu">
+                                                    <ul class="nav navbar-nav primary-nav mr-0">
+                                                        {{template "menu" .}}
+                                                    </ul>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </nav>
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="header-search-overlay no-disp">
+            <div class="container">
+                <div class="header-search-overlay-wrap">
+                    <form action="/search" role="form" class="searchform search-ajax">
+                        <input autocomplete="off" class="searchinput" name="search" placeholder="Search..." type="search" value="">
+                        <input class="searchsubmit hidden" name="submit" type="submit" value="Search">
+                    </form><button class="close" type="button"><span aria-hidden="true" class="fa fa-times"></span> <span class="sr-only">Close</span></button>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</header>
+
+{{end}}

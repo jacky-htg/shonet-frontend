@@ -1,0 +1,62 @@
+{{define "offcanvas"}}
+<div class="offcanvas open">
+    <div class="offcanvas-wrap">
+        <div class="offcanvas-user clearfix">
+            <a class="navbar-brand" href='{{printf "%s/" .Uri}}'>
+                <img class="logo" alt="Shonet" src='{{printf "%sfrontend/images/the-shonet-logo-dark.png" .Uri}}'>
+                <img class="logo-fixed" alt="Shonet" src='{{printf "%sfrontend/images/the-shonet-logo-dark.png" .Uri}}'>
+                <img class="logo-mobile" style="margin-top: 0px;" alt="Shonet" src='{{printf "%sfrontend/images/the-shonet-logo-light@2x.png" .Uri}}'>
+            </a>
+        </div>
+
+        <nav class="offcanvas-navbar">
+            <ul class="offcanvas-nav">
+                <li>
+                    <a href="/home">Home</a>
+                </li>
+                <li>
+                    <a href="/profile">My Profiles</a>
+                </li>
+
+                {{/*
+                <a href="#">Shonet IT List</a>
+                */}}
+
+                {{/*)}}
+                @if(\Route::current()->getName() !== "profile.index")
+                @foreach($menu["journal"]["categories"] as $mcf)
+                <li>
+                    <a href="/profile?tab-inisiate={{urlencode($mcf->title)}}&index={{$mcf->id}}">{{$mcf->title}}</a>
+                </li>
+                @endforeach
+                @else
+                @foreach($menu['journal']['categories'] as $mcf)
+                <li>
+                    <a data-content="{{$mcf->id}}" onclick="getTimelineFilter(this);">{{$mcf->title}}</a>
+                </li>
+                @endforeach
+                @endif
+                {{*/}}
+
+                <li>
+                    <a href='{{printf "%sinsiders" .Uri}}'>Insider</a>
+                </li>
+                <li>
+                    <a href='{{printf "%sshop-list" .Uri}}'>Shop</a>
+                </li>
+
+                {{if (eq .Auth nil)}}
+                <li>
+                    <a id="user-login-open">Log In</a>
+                </li>
+                {{else}}
+                <li>
+                    <a href="/user-logout">Log Out</a>
+                </li>
+                {{end}}
+            </ul>
+        </nav>
+
+    </div>
+</div>
+{{end}}

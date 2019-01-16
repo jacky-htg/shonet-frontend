@@ -1,0 +1,238 @@
+{{define "content"}}
+<div class="main-content">
+    {{/*1 mulai*/}}
+    <div class="user-profile-content container">
+
+        <div class="col-md-3 profile-table-container">
+            <div class="filter-search">
+                <h5 class="heading-filter">Filters</h5>
+
+                <h5 class="heading-filter"><span>Categories</span></h5>
+
+                <form class="opt-box" action="#">
+                    <input type="radio" id="all" value="all" name="q1" class="form-radio">
+                    <label for="all">All</label>
+                    <br>
+
+                    <input type="radio" id="fashion" value="fashion" name="q1" class="form-radio">
+                    <label for="fashion">Fashion</label>
+                    <br>
+
+                    <input type="radio" id="beauty" value="beauty" name="q1" class="form-radio">
+                    <label for="beauty">Beauty</label>
+                    <br>
+
+                    <input type="radio" id="life-style" value="life-style" name="q1" class="form-radio">
+                    <label for="life-style">Life style</label>
+                    <br>
+
+                    <input type="radio" id="list-shonet" value="list-shonet" name="q1" class="form-radio">
+                    <label for="list-shonet">Shonet IT List</label>
+                </form>
+
+                <h5 class="heading-filter"><span>Post Type</span></h5>
+
+                <form class="opt-box" action="#">
+                    <input type="radio" id="all1" value="all1" name="q1" class="form-radio">
+                    <label for="all1">All</label>
+                    <br>
+
+                    <input type="radio" id="article" value="article" name="q1" class="form-radio">
+                    <label for="article">Article</label>
+                    <br>
+
+                    <input type="radio" id="mixmatch" value="mixmatch" name="q1" class="form-radio">
+                    <label for="mixmatch">Mix & Match</label>
+                </form>
+
+            </div>
+        </div>
+
+        {{/*insider feeds mulai*/}}
+        <div class="col-md-6 targetTab-page main">
+            <div class="feed-container">
+
+                <div class="content-header-menu wrap-search-menu">
+                    <a class="content-header-title post-search-menu active" id="allpost">
+                        All
+                        <span class="dev-blue"></span>
+                    </a>
+                    <a class="content-header-title post-search-menu" target="1">
+                        Posts
+                        <span class="dev-blue"></span>
+                    </a>
+                    <a class="content-header-title post-search-menu" target="2">
+                        Insiders
+                        <span class="dev-blue"></span>
+                    </a>
+                    <a class="content-header-title post-search-menu" target="3">
+                        Products
+                        <span class="dev-blue"></span>
+                    </a>
+                </div>
+
+
+                {{/*search post content*/}}
+                <div class="article search-post targetTab" id="tab1">
+                    <div class="row">
+                        <h5 class="heading-filter">Post</h5>
+
+                        {{/*post result card mulai*/}}
+                        <div class="wrap-new-post-search">
+                            <a class="search-post-img" href="#">
+                                <img class="img-responsive" src="{{printf "%s" .Uri}}assets/bitmap.jpg">
+                            </a>
+                            <div class="content-post-search">
+                                <a href="#">3 Langkah Mudah Ini Kulitmu Akan Selalu Sehat Terawat, Girls!</a>
+                                <div class="article-profile">
+                                    <img class="article-post-img-search" src="{{printf "%s" .Uri}}assets/avatar.png" alt="user-profile-img">
+                                    <div class="article-post-content">
+                                        <p class="article-name">Rayoga Akbar Firdaus</p>
+                                        <p class="article-title"><span>Jakarta</span> Indonesia</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        {{/*post result card selesai*/}}
+
+                        {{/*navigation mulai*/}}
+                        <div class="col-md-12 col-sm-12 col-xs-12 text-center">
+                            <div class="see-more">
+                                <a target="1">See More</a>
+                            </div>
+                            <div class="navigation-box-follow">
+                                <div class="pagination">
+                                    <a href="#"><i class="fa fa-arrow-left"></i></a>
+                                    <a href="#">1</a>
+                                    <a class="active" href="#">2</a>
+                                    <a href="#">3</a>
+                                    <a href="#">4</a>
+                                    <a href="#">5</a>
+                                    <a href="#">...</a>
+                                    <a href="#">8</a>
+                                    <a href="#"><i class="fa fa-arrow-right"></i></a>
+                                </div>
+                            </div>
+                        </div>
+                        {{/*navigation selesai*/}}
+
+                    </div>
+                </div>
+                {{/*serach post content selesai*/}}
+
+
+                {{/*Follower*/}}
+                <div class="article search-post targetTab" id="tab2">
+                    <div class="row">
+                        <h5 class="heading-filter">Insider</h5>
+
+                        {{/*Follower insider search*/}}
+                        <div class="col-md-4 col-sm-6 col-xs-6">
+                            <a href="">
+                                <div class="wrap-box-follow">
+                                    <img class="following-row-mid-big" src="assets/avatar-2.jpeg" alt="following-feed-img">
+                                    <span class="heading-box-follow">Adhytia Putra</span>
+                                    <a class="btn-box-followed" href="#">Follow +</a>
+                                </div>
+                            </a>
+                        </div>
+                        {{/*Follower insider search selesai*/}}
+
+                        {{/*pagination mulai*/}}
+                        <div class="col-md-12 col-sm-12 col-xs-12 text-center">
+                            <div class="see-more">
+                                <a target="2">See More</a>
+                            </div>
+                            <div class="navigation-box-follow">
+                                <div class="pagination">
+                                    <a href="#"><i class="fa fa-arrow-left"></i></a>
+                                    <a href="#">1</a>
+                                    <a class="active" href="#">2</a>
+                                    <a href="#">3</a>
+                                    <a href="#">4</a>
+                                    <a href="#">5</a>
+                                    <a href="#">...</a>
+                                    <a href="#">8</a>
+                                    <a href="#"><i class="fa fa-arrow-right"></i></a>
+                                </div>
+                            </div>
+                        </div>
+                        {{/*pagination selesai*/}}
+
+                    </div>
+                </div>
+                {{/*Follower selesai*/}}
+
+                {{/*Product card mulai*/}}
+                <div class="article search-post targetTab" id="tab3">
+                    <div class="row">
+                        <h5 class="heading-filter">Product</h5>
+
+                        {{/*Product card result*/}}
+                        <div class="col-lg-6">
+                            <div class="wrap-shoper">
+                                <div class="main-img">
+                                    <img src="images/shoper-img.png" alt="image-shoper">
+                                </div>
+                                <div class="main-content">
+                                    <h3 class="heading">V-Neck Blouse</h3>
+                                    <span class="subheading">Zara</span>
+                                    <div class="price">IDR 250,000</div>
+                                    <p class="content"><a href="#">see more</a></p>
+                                </div>
+                            </div>
+                        </div>
+                        {{/*Product card result selesai*/}}
+
+                        {{/*Product pagination*/}}
+                        <div class="col-md-12 col-sm-12 col-xs-12 text-center">
+                            <div class="see-more">
+                                <a target="3">See More</a>
+                            </div>
+                            <div class="navigation-box-follow">
+                                <div class="pagination">
+                                    <a href="#"><i class="fa fa-arrow-left"></i></a>
+                                    <a href="#">1</a>
+                                    <a class="active" href="#">2</a>
+                                    <a href="#">3</a>
+                                    <a href="#">4</a>
+                                    <a href="#">5</a>
+                                    <a href="#">...</a>
+                                    <a href="#">8</a>
+                                    <a href="#"><i class="fa fa-arrow-right"></i></a>
+                                </div>
+                            </div>
+                        </div>
+                        {{/*Product pagination selesai*/}}
+
+                    </div>
+                </div>
+                {{/*product card selesai*/}}
+
+            </div>
+        </div>
+        {{/*insider feeds akhir*/}}
+
+        {{/*Sponsored card mulai*/}}
+        <div class="col-md-3 targetTab-page sidebar-right sticky3-real" id="tab6">
+
+            <div class="targetTab-page sponsor-panel" id="tab7">
+                <div class="sponsor-container stickyads">
+                    <div class="content-header hidden-sm hidden-xs">Sponsored</div>
+                    <div class="sponsors">
+                        <img src="assets/zara.jpg" alt="sponsors">
+                        <h4 >Zara</h4>
+                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Consectetur distinctio optio cum ipsa voluptates ratione unde culpa cupiditate, veniam voluptas adipisci nesciunt dolores, atque reiciendis est labore fugit alias dolore!</p>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+        {{/*Sponsored card selesai*/}}
+
+    </div>
+    {{/*1 selesai*/}}
+
+
+</div>
+{{end}}
