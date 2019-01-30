@@ -28,6 +28,8 @@ type ProductNull struct {
 	Description sql.NullString
 	CreatedAt   mysql.NullTime
 	UpdatedAt   mysql.NullTime
+	View		sql.NullInt64
+	Click		sql.NullInt64
 }
 
 type DescriptionProduct struct {

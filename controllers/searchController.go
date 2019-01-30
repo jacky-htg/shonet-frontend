@@ -14,5 +14,10 @@ func SearchIndexHandler(w http.ResponseWriter, r *http.Request) {
 		return
 	}
 
-	log.Printf("\n\n Hasil : %v", authUser)
+	menu, err := GetMenu()
+	if libraries.CheckError(err) {
+		return
+	}
+
+	log.Printf("\n\n Hasil : %v  &  %v", authUser, menu)
 }

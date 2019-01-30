@@ -1,0 +1,49 @@
+{
+  "mappings": {
+    "users": {
+      "dynamic": "strict",
+      "properties": {
+        "id": {"type": "integer"},
+        "name": {"type": "text", "fielddata": true},
+        "password": {"type": "text"},
+        "remember_token": {"type": "text"},
+        "group": {
+          "dynamic": "strict",
+          "properties": {
+            "id": {"type": "integer"},
+            "title": {"type": "text", "fielddata": true}
+          }
+        },
+        "is_active": {"type": "boolean"},
+        "is_reset_password": {"type": "boolean"},
+        "phone_number": {"type": "text"},
+        "photo": {"type": "text"},
+        "biography": {"type": "text"},
+        "birthdate": {"type": "date", "format": "yyyy-MM-dd HH:mm:ss", "null_value": "NULL"},
+        "gender": {"type": "text", "fielddata": true},
+        "city": {
+          "dynamic": "strict",
+          "properties": {
+            "id": {"type": "integer"},
+            "country": {
+              "dynamic": "strict",
+              "properties": {
+                "id": {"type": "integer"},
+                "name": {"type": "text", "fielddata": true},
+                "code": {"type": "text"}
+              }
+            },
+            "latitude": {"type": "float"},
+            "longitude": {"type": "float"},
+            "name": {"type": "text", "fielddata": true}
+          }
+        },
+        "created_at": {"type": "date", "format": "yyyy-MM-dd HH:mm:ss", "null_value": "NULL"},
+        "updated_at": {"type": "date", "format": "yyyy-MM-dd HH:mm:ss", "null_value": "NULL"},
+        "deleted_at": {"type": "date", "format": "yyyy-MM-dd HH:mm:ss", "null_value": "NULL"},
+        "login_type": {"type": "text", "fielddata": true},
+        "is_default": {"type": "integer"}
+      }
+    }
+  }
+}

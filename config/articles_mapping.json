@@ -1,0 +1,53 @@
+{
+  "mappings": {
+    "articles": {
+      "dynamic": "strict",
+      "properties": {
+        "id": {"type": "integer"},
+        "title": {"type": "text", "fielddata": true},
+        "slug": {"type": "text", "fielddata": true},
+        "permalink": {"type": "text"},
+        "content": {"type": "text", "fielddata": true},
+        "image": {"type": "text"},
+        "image_source": {"type": "text"},
+        "seo_keyword": {"type": "text"},
+        "type": {"type": "text", "fielddata": true},
+        "status": {"type": "text", "fielddata": true},
+        "request_publish_date": {"type": "date", "format": "yyyy-MM-dd HH:mm:ss", "null_value": "NULL"},
+        "publish_date": {"type": "date", "format": "yyyy-MM-dd HH:mm:ss", "null_value": "NULL"},
+        "writer": {
+          "properties": {
+            "id": {"type": "integer"},
+            "name": {"type": "text", "fielddata": true}
+          }
+        },
+        "editor": {
+          "properties": {
+            "id": {"type": "integer"},
+            "name": {"type": "text", "fielddata": true}
+          }
+        },
+        "created_at": {"type": "date", "format": "yyyy-MM-dd HH:mm:ss", "null_value": "NULL"},
+        "content_manulation": {"type": "text", "fielddata": true},
+        "tags": {
+          "properties": {
+            "id": {"type": "integer"},
+            "title": {"type": "text", "fielddata": true}
+          }
+        },
+        "categories": {
+          "properties": {
+            "id": {"type": "integer"},
+            "title": {"type": "text", "fielddata": true}
+          }
+        },
+        "products": {
+          "properties": {
+            "id": {"type": "integer"},
+            "name": {"type": "text", "fielddata": true}
+          }
+        }
+      }
+    }
+  }
+}

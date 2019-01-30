@@ -134,6 +134,10 @@ func GetUserClient(r *http.Request) (models.User, error) {
 				userID = val.(int)
 			}
 		}
+
+		if userID <= 0 {
+			return models.User{}, nil
+		}
 	}
 
 	if userID > 0 {

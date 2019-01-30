@@ -35,6 +35,51 @@ type UserNull struct {
 	CityId      sql.NullInt64
 	CreatedAt   mysql.NullTime
 	UpdatedAt   mysql.NullTime
+	DeletedAt	mysql.NullTime
+	CityName	sql.NullString
+	CityLat		sql.NullFloat64
+	CityLong	sql.NullFloat64
+	CountryId	sql.NullInt64
+	CountryName	sql.NullString
+	CountryCode sql.NullString
+}
+
+type UserElasticSearch struct {
+	ID 				uint			`json:"id"`
+	Name			string			`json:"name"`
+	Email			string			`json:"email"`
+
+	Group			struct {
+		ID			uint			`json:"id"`
+		Title		string			`json:"title"`
+	}								`json:"group"`
+
+	IsActive		int32			`json:"is_active"`
+	IsResetPassword int32			`json:"is_reset_password"`
+	PhoneNumber		string			`json:"phone_number"`
+	Photo			string			`json:"photo"`
+	Biography 		string			`json:"biography"`
+	Birthdate		string			`json:"birthdate"`
+	Gender			string			`json:"gender"`
+
+	City			struct {
+		ID			uint			`json:"id"`
+		Name		string			`json:"name"`
+		Country     struct {
+			ID		uint			`json:"id"`
+			Name    string          `json:"name"`
+			Code    string          `json:"code"`
+		}							`json:"country"`
+
+		Latitude	float64			`json:"latitude"`
+		Longitude	float64			`json:"longitude"`
+	}
+
+	CreatedAt		string			`json:"created_at"`
+	UpdatedAt       string          `json:"updated_at"`
+	DeletedAt       string          `json:"deleted_at"`
+	LoginType       string          `json:"login_type"`
+	IsDefault		int32			`json:"is_default"`
 }
 
 func UserValidation(user User) (User, error) {

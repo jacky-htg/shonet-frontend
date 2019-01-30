@@ -15,10 +15,12 @@ type Category struct {
 	Image     string     `json:"image"`
 	CreatedAt time.Time  `json:"created_at"`
 	UpdatedAt time.Time  `json:"updated_at"`
+	Icon	  string	 `json:"icon"`
 }
 
 type CategoryNull struct {
 	ParentID  sql.NullInt64
 	CreatedAt mysql.NullTime
 	UpdatedAt mysql.NullTime
+	Icon	  sql.NullString
 }
